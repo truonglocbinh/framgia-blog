@@ -1,0 +1,3 @@
+<% if @comments.present? %>
+  $("#entry-comment-<%= @comment.entry_id %>").html("<%= escape_javascript(render @comments) %>")
+<% end %>

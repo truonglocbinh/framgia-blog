@@ -1,0 +1,11 @@
+I"È(function() {
+  jQuery(function() {
+    return $("button.post").bind('click', function() {
+      var input;
+      input = $("#comment").val();
+      return alert(input);
+    });
+  });
+
+}).call(this);
+:ET

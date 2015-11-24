@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_for(@entry) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="field">
+        <%= f.text_field :title, placeholder: "Compose new title...", class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.text_area :body, placeholder: "Compose new content...", class: 'form-control',
+        :cols => 5, :rows => 6 %>
+      </div>
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  
+</div>

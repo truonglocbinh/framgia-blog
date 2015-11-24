@@ -1,0 +1,22 @@
+I"Í(function() {
+  jQuery(function() {
+    return $("button.post").bind('click', function() {
+      var input;
+      input = $("#comment-" + $(this).attr('id')).val();
+      if ($.trim(input)) {
+        return $.ajax({
+          url: "/comments",
+          type: "POST",
+          data: {
+            value: input,
+            entry_id: $(this).attr('id')
+          }
+        });
+      } else {
+        return alert("false");
+      }
+    });
+  });
+
+}).call(this);
+:ET

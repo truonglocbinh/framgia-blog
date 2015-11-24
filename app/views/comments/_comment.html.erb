@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5><%= link_to comment.user.name, comment.user %></h3>
+    <h6>Posted <%= time_ago_in_words(comment.created_at) %> ago.</h6>
+  </div>
+  <div class="panel-body">
+    <%= comment.content %>
+  </div>
+</div>

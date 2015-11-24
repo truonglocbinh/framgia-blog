@@ -1,0 +1,15 @@
+I"(function() {
+  jQuery(function() {
+    return $("button.post").bind('click', function() {
+      var input;
+      input = $("#comment").val();
+      if ($.trim(input)) {
+        return alert("true");
+      } else {
+        return alert("false");
+      }
+    });
+  });
+
+}).call(this);
+:ET

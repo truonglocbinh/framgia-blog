@@ -1,0 +1,9 @@
+I"—(function() {
+  jQuery(function() {
+    return $("button.post").bind('click', function() {
+      return alert("jquery");
+    });
+  });
+
+}).call(this);
+:ET
