@@ -17,10 +17,13 @@
       <span class="entry-content">
         <%= entry.body %>
       </span>
-      <div class="comments">
+      <span>
+        <a href="javascript:void(0)" class="show-comments" id="<%= entry.id%>">Comments</a>
+      </span>
+      <div class="comments" id="entry-comment-id-<%= entry.id %>">
       <!-- post comment -->
       <% if logged_in? %>
-      <div class="row">
+      <div class="row show">
         <%= form_for Comment.new, remote: true  do |f| %>
           <%= f.text_field :content, class: "post-comment-#{entry.id} form-control",
                                      placeholder: "Comment"

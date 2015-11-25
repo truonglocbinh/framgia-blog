@@ -1,0 +1,41 @@
+I"(function() {
+  jQuery(function() {
+    $(document).on('click', "button.post", function() {
+      var input;
+      input = $("#comment-" + $(this).attr('id')).val();
+      if ($.trim(input)) {
+        $.ajax({
+          url: "/comments",
+          type: "POST",
+          data: {
+            value: input,
+            entry_id: $(this).attr('id')
+          }
+        });
+        return $("#comment-" + $(this).attr('id')).val("");
+      } else {
+        return alert("Comment not allow null");
+      }
+    });
+    $(document).on('click', ".show-all-comment", function() {
+      var entry_id;
+      entry_id = $(this).attr('id');
+      $.ajax({
+        url: "/entries/" + entry_id + "/all_comment",
+        type: "POST",
+        data: {
+          entry_id: entry_id
+        }
+      });
+      return $(this).hide;
+    });
+    return $(document).on('click', ".show-comments", function() {
+      var id;
+      id = $(this).attr("id");
+      alert(id);
+      return $("#entry-comment-id-" + id).css("display", "inline");
+    });
+  });
+
+}).call(this);
+:ET
