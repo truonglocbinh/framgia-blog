@@ -21,7 +21,7 @@ users = User.order(:created_at).take(6)
 50.times do
   title = Faker::Lorem.sentence(2)
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.entries.create!(title: title,content: content) }
+  users.each { |user| user.entries.create!(title: title, body: content) }
 end
 
 # Following relationships
