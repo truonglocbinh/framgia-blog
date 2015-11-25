@@ -1,7 +1,7 @@
 <li id="entry-<%= entry.id %>">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= entry.title %></h3>
+      <h3 class="panel-title"><%= link_to entry.title, entry %> </h3>
       <h6>
         Posted <%= time_ago_in_words(entry.created_at) %> ago.
         by <span class="user"><%= link_to entry.user.name, entry.user %></span>

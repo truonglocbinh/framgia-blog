@@ -1,0 +1,52 @@
+<li id="entry-<%= @entry.id %>">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @entry.title %> </h3>
+      <h6>
+        Posted <%= time_ago_in_words(@entry.created_at) %> ago.
+        by <span class="user"><%= link_to @entry.user.name, @entry.user %></span>
+      </h6>
+      <h6>
+        <% if current_user?(@entry.user) %>
+          <%= link_to "delete", @entry, method: :delete,
+                                           data: { confirm: "You sure?"} %>
+        <% end %>
+      </h6>
+    </div>
+    <div class="panel-body">
+      <span class="entry-content">
+        <%= @entry.body %>
+      </span>
+      <div class="comments">
+      <!-- post comment -->
+      <% if logged_in? %>
+      <div class="row">
+        <div class="col-md-10">
+          <div class="form-group">
+            <label for="comment">
+              <a href="javascript:void(0)" class="show-comment-text" id="<%= @entry.id %>"> Comment:
+              </a>
+            </label>
+            <textarea class="form-control post-comment" rows="2" id="comment-<%= @entry.id %>"></textarea>
+          </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger post" id= "<%= @entry.id%>">
+              Post!
+            </button>
+        </div>
+      </div>
+      <% end %>
+      <!--show comment -->
+      <div class="row" id="entry-comment-<%= @entry.id %>">
+        <%= render @entry.comments.limit(3) %>
+        <% if @entry.comments.size > 0 %>
+          <a href="javascript:void(0)" class="show-all-comment" id="<%= @entry.id %>">
+            Show all comments
+          </a>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+</li>

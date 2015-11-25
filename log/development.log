@@ -21288,3 +21288,392 @@ Processing by UsersController#show as HTML
   Rendered layouts/_header.html.erb (0.4ms)
   Rendered layouts/_footer.html.erb (0.1ms)
 Completed 200 OK in 200ms (Views: 192.6ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 13:48:32 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "entries" WHERE "entries"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered shared/_user_info.html.erb (3.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.erb (26.1ms)
+  Rendered shared/_error_messages.html.erb (3.0ms)
+  Rendered shared/_entry_form.html.erb (14.5ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)
+  [1m[36mEntry Load (1.0ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)  ORDER BY "entries"."created_at" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 306]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/_comment.html.erb (4.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 306]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 305]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 305]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 304]]
+  Rendered collection (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 304]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 303]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 303]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 301]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/_comment.html.erb (4.6ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 301]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 300]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 300]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 299]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 299]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 298]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 298]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 297]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 297]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 295]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/_comment.html.erb (3.7ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 295]]
+  Rendered entries/_entry.html.erb (426.2ms)
+  Rendered shared/_feed.html.erb (434.1ms)
+  Rendered static_pages/_logged_in_home.html.erb (482.3ms)
+  Rendered static_pages/home.html.erb within layouts/application (487.9ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 904ms (Views: 814.0ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 13:48:33 +0700
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "entries" WHERE "entries"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered shared/_user_info.html.erb (1.7ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.erb (3.1ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  Rendered shared/_entry_form.html.erb (1.8ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)
+  [1m[36mEntry Load (1.1ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)  ORDER BY "entries"."created_at" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 306]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/_comment.html.erb (1.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 306]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 305]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 305]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 304]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 304]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 303]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 303]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 301]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/_comment.html.erb (3.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 301]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 300]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 300]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 299]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 299]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 298]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 298]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 297]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 297]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 295]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/_comment.html.erb (3.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 295]]
+  Rendered entries/_entry.html.erb (40.9ms)
+  Rendered shared/_feed.html.erb (48.8ms)
+  Rendered static_pages/_logged_in_home.html.erb (59.1ms)
+  Rendered static_pages/home.html.erb within layouts/application (60.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 184ms (Views: 174.9ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/entries/306" for 127.0.0.1 at 2015-11-25 13:48:36 +0700
+Processing by EntriesController#show as HTML
+  Parameters: {"id"=>"306"}
+  [1m[35mEntry Load (0.3ms)[0m  SELECT  "entries".* FROM "entries" WHERE "entries"."id" = ?  ORDER BY "entries"."created_at" DESC LIMIT 1  [["id", 306]]
+  Rendered entries/show.html.erb within layouts/application (26.5ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.3ms)
+
+NameError (undefined local variable or method `entry' for #<#<Class:0x007f7d50ae5748>:0x007f7d50af6b88>):
+  app/views/entries/show.html.erb:1:in `_app_views_entries_show_html_erb__2498987131911687751_70088100652440'
+
+
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_source.erb (7.1ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (66.8ms)
+
+
+Started GET "/entries/306" for 127.0.0.1 at 2015-11-25 13:48:36 +0700
+Processing by EntriesController#show as HTML
+  Parameters: {"id"=>"306"}
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE "entries"."id" = ?  ORDER BY "entries"."created_at" DESC LIMIT 1[0m  [["id", 306]]
+  Rendered entries/show.html.erb within layouts/application (19.6ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.1ms)
+
+NameError (undefined local variable or method `entry' for #<#<Class:0x007f7d50ae5748>:0x007f7d50a21668>):
+  app/views/entries/show.html.erb:1:in `_app_views_entries_show_html_erb__2498987131911687751_70088100109260'
+
+
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_source.erb (7.9ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.7ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (44.0ms)
+
+
+Started GET "/entries/306" for 127.0.0.1 at 2015-11-25 13:48:53 +0700
+Processing by EntriesController#show as HTML
+  Parameters: {"id"=>"306"}
+  [1m[35mEntry Load (0.2ms)[0m  SELECT  "entries".* FROM "entries" WHERE "entries"."id" = ?  ORDER BY "entries"."created_at" DESC LIMIT 1  [["id", 306]]
+  Rendered entries/show.html.erb within layouts/application (29.3ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.2ms)
+
+NameError (undefined local variable or method `entry' for #<#<Class:0x007f7d50ae5748>:0x00000005267820>):
+  app/views/entries/show.html.erb:4:in `_app_views_entries_show_html_erb__2498987131911687751_43043600'
+
+
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_source.erb (8.3ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.7ms)
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (52.3ms)
+
+
+Started GET "/entries/306" for 127.0.0.1 at 2015-11-25 13:50:39 +0700
+Processing by EntriesController#show as HTML
+  Parameters: {"id"=>"306"}
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE "entries"."id" = ?  ORDER BY "entries"."created_at" DESC LIMIT 1[0m  [["id", 306]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 306]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/_comment.html.erb (3.7ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 306]]
+  Rendered entries/show.html.erb within layouts/application (17.5ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 183ms (Views: 178.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2015-11-25 13:50:43 +0700
+Processing by CommentsController#create as */*
+  Parameters: {"value"=>"dddd", "entry_id"=>"306"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "entry_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "dddd"], ["user_id", 1], ["entry_id", 306], ["created_at", "2015-11-25 06:50:43.284515"], ["updated_at", "2015-11-25 06:50:43.284515"]]
+  [1m[35m (128.5ms)[0m  commit transaction
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE "entries"."id" = ?  ORDER BY "entries"."created_at" DESC LIMIT 1[0m  [["id", 306]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 306]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/_comment.html.erb (8.8ms)
+  Rendered entries/_more_comment.html.erb (0.7ms)
+  Rendered entries/show_comment.js.erb (19.1ms)
+Completed 200 OK in 172ms (Views: 36.0ms | ActiveRecord: 129.8ms)
+
+
+Started POST "/entries/306/all_comment" for 127.0.0.1 at 2015-11-25 13:50:48 +0700
+Processing by EntriesController#all_comment as */*
+  Parameters: {"entry_id"=>"306", "id"=>"306"}
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE "entries"."id" = ?  ORDER BY "entries"."created_at" DESC LIMIT 1[0m  [["id", 306]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC  [["entry_id", 306]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/_comment.html.erb (3.5ms)
+  Rendered entries/all_comment.js.erb (8.6ms)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/entries" for 127.0.0.1 at 2015-11-25 13:51:03 +0700
+
+AbstractController::ActionNotFound (The action 'index' could not be found for EntriesController):
+  actionpack (4.2.5) lib/abstract_controller/base.rb:132:in `process'
+  actionview (4.2.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.5) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  web-console (2.0.0.beta3) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0.beta3) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (2.11.1) lib/puma/server.rb:507:in `handle_request'
+  puma (2.11.1) lib/puma/server.rb:375:in `process_client'
+  puma (2.11.1) lib/puma/server.rb:262:in `block in run'
+  puma (2.11.1) lib/puma/thread_pool.rb:104:in `call'
+  puma (2.11.1) lib/puma/thread_pool.rb:104:in `block in spawn_thread'
+
+
+  Rendered /home/baibinhphuchan/.rvm/gems/ruby-2.2.3/gems/web-console-2.0.0.beta3/lib/action_dispatch/templates/rescues/unknown_action.html.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 13:51:12 +0700
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "entries" WHERE "entries"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered shared/_user_info.html.erb (2.8ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.erb (6.5ms)
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered shared/_entry_form.html.erb (3.2ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)
+  [1m[36mEntry Load (1.8ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)  ORDER BY "entries"."created_at" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "entries" WHERE (user_id IN (SELECT followed_id FROM relationships 
+                      WHERE follower_id = 1) 
+                      OR user_id = 1)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 306]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/_comment.html.erb (4.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 306]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 305]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 305]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 304]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 304]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 303]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 303]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 301]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/_comment.html.erb (4.9ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 301]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 300]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 300]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 299]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 299]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 298]]
+  Rendered collection (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?[0m  [["entry_id", 298]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3[0m  [["entry_id", 297]]
+  Rendered collection (0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 297]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."entry_id" = ?  ORDER BY "comments"."created_at" DESC LIMIT 3  [["entry_id", 295]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/_comment.html.erb (4.3ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."entry_id" = ?  [["entry_id", 295]]
+  Rendered entries/_entry.html.erb (66.7ms)
+  Rendered shared/_feed.html.erb (76.9ms)
+  Rendered static_pages/_logged_in_home.html.erb (96.5ms)
+  Rendered static_pages/home.html.erb within layouts/application (98.4ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 216ms (Views: 203.2ms | ActiveRecord: 7.2ms)
