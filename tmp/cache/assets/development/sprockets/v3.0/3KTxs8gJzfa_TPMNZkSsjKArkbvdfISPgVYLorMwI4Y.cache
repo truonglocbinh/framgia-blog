@@ -1,0 +1,32 @@
+I"F(function() {
+  jQuery(function() {
+    $("button.post").bind('click', function() {
+      var input;
+      input = $("#comment-" + $(this).attr('id')).val();
+      if ($.trim(input)) {
+        $.ajax({
+          url: "/comments",
+          type: "POST",
+          data: {
+            value: input,
+            entry_id: $(this).attr('id')
+          }
+        });
+        return $("#comment-" + $(this).attr('id')).val("");
+      } else {
+        return alert("Comment not allow null");
+      }
+    });
+    $(".show-comment-text").bind('click', function() {
+      var entry_id;
+      return entry_id = $(this).attr('id');
+    });
+    return $(".delete-comment").bind('click', function() {
+      var comment_id, r;
+      r = confirm("Are you sure delete this ?");
+      return comment_id = $(this).data("id");
+    });
+  });
+
+}).call(this);
+:ET

@@ -1,5 +1,5 @@
 jQuery ->
-  $("button.post").bind 'click', ->
+  $(document).on 'click', "button.post", ->
     input = $("#comment-"+ $(@).attr('id')).val()
     if $.trim(input)
      $.ajax({
@@ -11,8 +11,15 @@ jQuery ->
     else
       alert "Comment not allow null"
 
-  $(".show-comment-text").bind 'click', ->
+  $(document).on 'click',".show-all-comment",  ->
     entry_id = $(@).attr('id')
+    $.ajax({
+      url: "/entries/" + entry_id + "/all_comment",
+      type: "POST",
+      data: {entry_id: entry_id}
+    })
+    $(@).hide
+
 
 
     

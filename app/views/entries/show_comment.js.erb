@@ -1,3 +1,6 @@
 <% if @comments.present? %>
-  $("#entry-comment-<%= @comment.entry_id %>").html("<%= escape_javascript(render @comments) %>")
+  $("#entry-comment-<%= @comment.entry_id %>").
+              html("<%= escape_javascript render @comments %>")
+  $("#entry-comment-<%= @comment.entry_id %>").
+               append("<%= escape_javascript render(:partial => 'entries/more_comment', :locals => { :c => @comment }) %>")
 <% end %>

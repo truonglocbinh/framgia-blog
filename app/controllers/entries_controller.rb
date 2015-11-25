@@ -13,6 +13,15 @@ class EntriesController < ApplicationController
   	end
   end
 
+  def all_comment
+    @entry_id = params[:entry_id]
+    @comments = Entry.find(@entry_id).comments
+
+    respond_to do |format| 
+      format.js {}
+    end
+  end
+
   def destroy
   	@entry.destroy
     flash[:success] = "Entry deleted"
