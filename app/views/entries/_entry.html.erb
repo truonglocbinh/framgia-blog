@@ -21,20 +21,13 @@
       <!-- post comment -->
       <% if logged_in? %>
       <div class="row">
-        <div class="col-md-10">
-          <div class="form-group">
-            <label for="comment">
-              <a href="javascript:void(0)" class="show-comment-text" id="<%= entry.id %>"> Comment:
-              </a>
-            </label>
-            <textarea class="form-control post-comment" rows="2" id="comment-<%= entry.id %>"></textarea>
-          </div>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-danger post" id= "<%= entry.id%>">
-              Post!
-            </button>
-        </div>
+        <%= form_for Comment.new, remote: true  do |f| %>
+          <%= f.text_field :content, class: "post-comment-#{entry.id} form-control",
+                                     placeholder: "Comment"
+           %>
+          <br>
+          <%= f.hidden_field :entry_id, value: entry.id %>
+        <% end %>
       </div>
       <% end %>
       <!--show comment -->
