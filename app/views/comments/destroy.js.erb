@@ -1,0 +1,10 @@
+<% if @comments.present? %>
+  $("#entry-comment-<%= @entry_id %>").
+              html("<%= escape_javascript render @comments.limit(3) %>")
+  <% if @comments.size > 3 %>
+    $("#entry-comment-<%= @comment.entry_id %>").
+               append("<%= escape_javascript render(:partial => 'entries/more_comment', :locals => { :c => @comment }) %>")
+  <% end %>
+<% else %>
+  $("#entry-comment-<%= @entry_id %>").html("No comment")
+<% end %>

@@ -6,11 +6,25 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
   end
 
+  def edit
+    @entry = Entry.find(params[:id])
+  end
+
+  def update
+    @entries = Entry.all
+    @entry = Entry.find(params[:id])
+    @entry.update_attributes(entry_params)
+  end
+
   def create
   	@entry = current_user.entries.build(entry_params)
   	if @entry.save
-  	  flash[:success] = "Entry created !"
-  	  redirect_to root_url
+  	  
+      @feed_items = current_user.feed.paginate(page: params[:page], per_page: 4)
+  	  respond_to do |format|
+        format.html { render 'static_pages/home' }
+        format.js {}
+      end
   	else
       @feed_items = current_user.feed.paginate(page: params[:page])
   	  render 'static_pages/home'
@@ -28,8 +42,10 @@ class EntriesController < ApplicationController
 
   def destroy
   	@entry.destroy
-    flash[:success] = "Entry deleted"
-    redirect_to request.referrer || root_url
+    @feed_items = current_user.feed.paginate(page: params[:page], per_page: 4)
+    respond_to do |format|
+      format.js {}
+    end
   end
   
   private

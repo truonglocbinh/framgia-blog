@@ -1,0 +1,50 @@
+I"/(function() {
+  jQuery(function() {
+    var count, show;
+    $(document).on('click', "button.post", function() {
+      var input;
+      input = $("#comment-" + $(this).attr('id')).val();
+      if ($.trim(input)) {
+        $.ajax({
+          url: "/comments",
+          type: "POST",
+          data: {
+            value: input,
+            entry_id: $(this).attr('id')
+          }
+        });
+        return $("#comment-" + $(this).attr('id')).val("");
+      } else {
+        return alert("Comment not allow null");
+      }
+    });
+    $(document).on('click', ".show-all-comment", function() {
+      var entry_id;
+      entry_id = $(this).attr('id');
+      $.ajax({
+        url: "/entries/" + entry_id + "/all_comment",
+        type: "POST",
+        data: {
+          entry_id: entry_id
+        }
+      });
+      return $(this).hide;
+    });
+    show = true;
+    count = 0;
+    return $(document).on('click', ".show-comments", function() {
+      var id, value;
+      id = $(this).attr("id");
+      value = $(this).html();
+      if (value === "Comments") {
+        $("#entry-comment-id-" + id).css("display", "inline");
+        return $("#" + id).html("Hide Comments");
+      } else {
+        $("#entry-comment-id-" + id).css("display", "none");
+        return $("#" + id).html("Comments");
+      }
+    });
+  });
+
+}).call(this);
+:ET

@@ -3,5 +3,5 @@
               html("<%= escape_javascript render @comments %>")
   $("#entry-comment-<%= @comment.entry_id %>").
                append("<%= escape_javascript render(:partial => 'entries/more_comment', :locals => { :c => @comment }) %>")
-  $("input.post-comment-<%= @comment.entry_id %>").val("")
+  $("textarea.post-comment-<%= @comment.entry_id %>").val("")
 <% end %>

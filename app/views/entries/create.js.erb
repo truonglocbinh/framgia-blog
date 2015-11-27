@@ -1,0 +1,5 @@
+<% if  @feed_items.size > 0 %>
+  $(".entries").html("<%= escape_javascript(render @feed_items) %>")
+  $("input#entry_title").val("")
+  $("textarea#entry_body").val("")
+<% end %>

@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   	@comment.entry_id = params[:comment][:entry_id]
   	if @comment.save
       @comments = Entry.find( @comment.entry_id ).comments.limit(3)
-  	  respond_to do |format| 
+  	  respond_to do |format|
         format.js { render "entries/show_comment.js.erb"}
       end
   	else
@@ -16,9 +16,11 @@ class CommentsController < ApplicationController
   
   def destroy
   	@comment = Comment.find(params[:id])
+    @entry_id = @comment.entry_id
     if @comment.destroy
+      @comments = Entry.find(@comment.entry_id).comments
       respond_to do |format|
-        format.html { redirect_to  request.referer}
+        format.js {}
       end
     else
       redirect_to root_url

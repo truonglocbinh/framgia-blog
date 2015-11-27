@@ -1,0 +1,3 @@
+<% if  @feed_items.size > 0 %>
+  $(".entries").html("<%= escape_javascript(render @feed_items) %>")
+<% end %>

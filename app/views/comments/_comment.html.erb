@@ -1,15 +1,14 @@
-<div class="panel panel-default"  id="comment-<%= comment.id %>">
-  <div class="panel-body">
-    <div class="content-comment">
-      <%= link_to comment.user.name, comment.user %>:  <%= comment.content %>
-    </div>
-    <div class="posted-time">
-      <h6>Posted <%= time_ago_in_words(comment.created_at) %> ago.</h6>
-    </div>
-  </div>
-  <% if logged_in? && comment.user_id == current_user.id %>
-    <label>
-      <%= link_to "delete", comment, method: :delete, data: {confirm: "Are you sure ?" } %>
-    </label>
-  <% end %>
+<div class="media-body"  id="comment-<%= comment.id %>">
+  <h4 class="media-heading">
+    <%= link_to comment.user.name, comment.user %>
+    <small><%= comment.created_at %></small>
+    <small class="delete-comment">
+      <% if comment.user_id == current_user.id %>
+        <%= link_to(image_tag("delete.png",alt: "Delte entry", size: "24x24"), comment, method: :delete,
+          data: {confirm: "You sure ?"}, remote: true) %>
+      <% end %>
+    </small>
+  </h4>
+  <%= comment.content %>
 </div>
+<hr>

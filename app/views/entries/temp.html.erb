@@ -1,0 +1,15 @@
+<div class="media"  id="comment-<%= comment.id %>">
+  <div class="panel-body">
+    <div class="content-comment">
+      <%= link_to comment.user.name, comment.user %>:  <%= comment.content %>
+    </div>
+    <div class="posted-time">
+      <h6>Posted <%= time_ago_in_words(comment.created_at) %> ago.</h6>
+    </div>
+  </div>
+  <% if logged_in? && comment.user_id == current_user.id %>
+    <label>
+      <%= link_to "delete", comment, method: :delete, data: {confirm: "Are you sure ?" } %>
+    </label>
+  <% end %>
+</div>

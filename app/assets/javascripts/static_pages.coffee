@@ -20,18 +20,17 @@ jQuery ->
     })
     $(@).hide
 
-  if show == undefined
-      show = true
-
+  show = true
+  count = 0;  
   $(document).on 'click', ".show-comments", ->
-    
     id = $(@).attr("id")
-    if show
+    value = $(@).html()
+    if value == "Comments"
       $("#entry-comment-id-" + id).css("display", "inline")
-      show = false
+      $("#"+id).html("Hide Comments")
     else
       $("#entry-comment-id-" + id).css("display", "none")
-      show = true
+      $("#"+id).html("Comments")
 
 
 
